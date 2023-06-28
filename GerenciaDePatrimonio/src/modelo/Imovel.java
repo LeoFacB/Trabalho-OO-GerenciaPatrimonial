@@ -5,7 +5,8 @@ public class Imovel extends Bem {
 	private int valor;
 	private String endereco;
 	
-	public Imovel(String nome,int tamanhoTerreno,int valor,String endereco, String descricao, int numeroSerie, String dataAquisicao) {
+	public Imovel(String nome,String descricao,int numeroSerie, String 
+	dataAquisicao, int tamanhoTerreno, int valor, String endereco) {
 		super(nome, descricao, numeroSerie, dataAquisicao);
 		this.tamanhoTerreno=tamanhoTerreno;
 		this.valor=valor;

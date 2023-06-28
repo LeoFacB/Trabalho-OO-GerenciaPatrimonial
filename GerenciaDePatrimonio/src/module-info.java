@@ -6,4 +6,5 @@
  *
  */
 module GerenciaDePatrimonio {
+	requires java.desktop;
 }
