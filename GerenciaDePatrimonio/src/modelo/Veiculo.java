@@ -5,9 +5,9 @@ public class Veiculo extends Bem{
 	private String marca;
 	private String modelo;
 
-	public Veiculo(String nome,String descricao,int numeroSerie,String dataAquisicao, String marca,
+	public Veiculo(String nome, String descricao, String dataAquisicao, int numeroSerie, String marca,
 			String placa, String modelo) {
-		super(nome, descricao, numeroSerie, dataAquisicao);
+		super(nome, descricao, dataAquisicao,numeroSerie);
 		this.marca=marca;
 		this.placa=placa;
 		this.modelo=modelo;

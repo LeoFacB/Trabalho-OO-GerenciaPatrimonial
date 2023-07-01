@@ -5,9 +5,9 @@ public class Imovel extends Bem {
 	private int valor;
 	private String endereco;
 	
-	public Imovel(String nome,String descricao,int numeroSerie, String 
-	dataAquisicao, int tamanhoTerreno, int valor, String endereco) {
-		super(nome, descricao, numeroSerie, dataAquisicao);
+	public Imovel(String nome, String descricao, String dataAquisicao,
+			int numeroSerie,int tamanhoTerreno, int valor, String endereco) {
+		super(nome, descricao, dataAquisicao, numeroSerie);
 		this.tamanhoTerreno=tamanhoTerreno;
 		this.valor=valor;
 		this.endereco=endereco;

@@ -228,18 +228,17 @@ public class TelaMenu implements ActionListener, ListSelectionListener {
 			listaVeiculoCadastrados.addListSelectionListener(this);
 			Object src = e.getSource();
 		
-			//Cadastro de novo aluno
+			/*Cadastro de Filial*/
 			if(src == cadastroFilial)
 				new TelaDetalhe().inserirEditar(1, dados, 0);
-			
 			if(src == cadastroImovel)
-				new TelaDetalhe().inserirEditarBem(2, dados, 0);
+				new TelaDetalhe().inserirEditarBem(10, dados, 0);
 			if(src == cadastroVeiculo)
-				new TelaDetalhe().inserirEditarBem(4, dados, 0);
+				new TelaDetalhe().inserirEditarBem(30, dados, 0);
 			if(src == cadastroEletronico)
-				new TelaDetalhe().inserirEditarBem(8, dados, 0);
+				new TelaDetalhe().inserirEditarBem(20, dados, 0);
 			if(src == cadastroConsumivel)
-				new TelaDetalhe().inserirEditarBem(6, dados, 0);
+				new TelaDetalhe().inserirEditarBem(40, dados, 0);
 
 			// Atualiza a lista de nomes de alunos mostrada no JList
 			if(src == atualizarFilial) {
@@ -262,33 +261,6 @@ public class TelaMenu implements ActionListener, ListSelectionListener {
 				listaConsumivelCadastrados.setListData(new ControleBem(dados).getNomeBemConsumivel());			
 				listaConsumivelCadastrados.updateUI();
 			}
-			
-			if(src == cadastroImovel)
-				new TelaDetalhe().inserirEditar(2, dados, 0);
-			if(src == cadastroVeiculo)
-				new TelaDetalhe().inserirEditar(4, dados, 0);
-			if(src == cadastroEletronico)
-				new TelaDetalhe().inserirEditar(8, dados, 0);
-			if(src == cadastroConsumivel)
-				new TelaDetalhe().inserirEditar(6, dados, 0);
-			
-			if(src == atualizarFilial) {
-				//listaBensCadastrados.setListData(new ControleBem(dados).getNomeBensTotal());			
-				listaFilialsCadastrados.updateUI();
-			}
-			//BENS
-			if(src == atualizarImovel) {	
-				listaImovelCadastrados.updateUI();
-			}
-			if(src == atualizarVeiculo) {	
-				listaVeiculoCadastrados.updateUI();
-			}
-			if(src == atualizarEletronico) {	
-				listaEletronicoCadastrados.updateUI();
-			}
-			if(src == atualizarConsumivel) {	
-				listaConsumivelCadastrados.updateUI();
-			}
 	}
 	//Captura eventos relacionados ao JList
 	public void valueChanged(ListSelectionEvent e) {
@@ -299,16 +271,16 @@ public class TelaMenu implements ActionListener, ListSelectionListener {
 		}
 
 		if(e.getValueIsAdjusting() && src == listaConsumivelCadastrados) {
-			new TelaDetalhe().inserirEditar(9, dados, listaConsumivelCadastrados.getSelectedIndex());
+			new TelaDetalhe().inserirEditarBem(41, dados, listaConsumivelCadastrados.getSelectedIndex());
 		}
 		if(e.getValueIsAdjusting() && src == listaEletronicoCadastrados) {
-			new TelaDetalhe().inserirEditar(10, dados, listaEletronicoCadastrados.getSelectedIndex());
+			new TelaDetalhe().inserirEditarBem(21, dados, listaEletronicoCadastrados.getSelectedIndex());
 		}
 		if(e.getValueIsAdjusting() && src == listaImovelCadastrados) {
-			new TelaDetalhe().inserirEditar(5, dados, listaImovelCadastrados.getSelectedIndex());
+			new TelaDetalhe().inserirEditarBem(11, dados, listaImovelCadastrados.getSelectedIndex());
 		}
 		if(e.getValueIsAdjusting() && src == listaVeiculoCadastrados) {
-			new TelaDetalhe().inserirEditar(7, dados, listaVeiculoCadastrados.getSelectedIndex());
+			new TelaDetalhe().inserirEditarBem(31, dados, listaVeiculoCadastrados.getSelectedIndex());
 		}
 	}
 }

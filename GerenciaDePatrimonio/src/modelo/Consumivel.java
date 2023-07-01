@@ -2,9 +2,9 @@ package modelo;
 
 public class Consumivel extends Bem {
 	private int depreciacao;
-	public Consumivel(String nome, String descricao, int numeroSerie, String dataAquisicao,
+	public Consumivel(String nome, String descricao, String dataAquisicao, int numeroSerie,
 			int depreciacao) {
-		super(nome, descricao, numeroSerie, dataAquisicao);
+		super(nome, descricao, dataAquisicao, numeroSerie);
 		this.depreciacao=depreciacao;
 	}
 	

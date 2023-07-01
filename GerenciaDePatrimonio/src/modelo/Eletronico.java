@@ -2,10 +2,10 @@ package modelo;
 
 public class Eletronico extends Bem {
 	private int voltagem;
-	private String necessitaTomada;
-	public Eletronico(String nome, String descricao, int numeroSerie, String dataAquisicao,
-			int voltagem, String necessitaTomada) {
-		super(nome, descricao, numeroSerie, dataAquisicao);
+	private boolean necessitaTomada;
+	public Eletronico(String nome, String descricao, String dataAquisicao, int numeroSerie,
+			int voltagem, boolean necessitaTomada) {
+		super(nome, descricao,dataAquisicao,numeroSerie);
 		this.voltagem= voltagem;
 		this.necessitaTomada=necessitaTomada;
 	}
@@ -16,10 +16,10 @@ public class Eletronico extends Bem {
 	public void setVoltagem(int voltagem) {
 		this.voltagem = voltagem;
 	}
-	public String isNecessitaTomada() {
+	public boolean isNecessitaTomada() {
 		return necessitaTomada;
 	}
-	public void setNecessitaTomada(String necessitaTomada) {
+	public void setNecessitaTomada(boolean necessitaTomada) {
 		this.necessitaTomada = necessitaTomada;
 	}
 }

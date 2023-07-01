@@ -114,8 +114,8 @@ public class ControleDados {
             return false;
         } 
         else {
-            Veiculo v = new Veiculo(dadosVeiculo[1],dadosVeiculo[2], Integer.parseInt(dadosVeiculo[3]),
-            		dadosVeiculo[4],dadosVeiculo[5],dadosVeiculo[6],dadosVeiculo[7]);
+            Veiculo v = new Veiculo(dadosVeiculo[1], dadosVeiculo[2],dadosVeiculo[3],
+            		Integer.parseInt(dadosVeiculo[4]), dadosVeiculo[5], dadosVeiculo[6], dadosVeiculo[7]);
             dados.inserirEditarVeiculo(v, Integer.parseInt(dadosVeiculo[0]));
             JOptionPane.showMessageDialog(null, "Veiculo inserido/editado com sucesso.",
             		"Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -136,11 +136,11 @@ public class ControleDados {
             while (!dados.getVeiculo()[cont].getNome().equals(veiculoRemovido)) {
                 cont++;
             }
-            for (int j = cont; j < dados.getQtdFiliais() - 1; j++) {
-                dados.getFiliais()[j] = dados.getFiliais()[j + 1];
+            for (int j = cont; j < dados.getQtdVeiculos() - 1; j++) {
+                dados.getVeiculo()[j] = dados.getVeiculo()[j + 1];
             }
             dados.getVeiculo()[dados.getQtdVeiculos()] = null;
-            dados.setQtdFiliais(dados.getQtdVeiculos() - 1);
+            dados.setQtdVeiculo(dados.getQtdVeiculos() - 1);
             JOptionPane.showMessageDialog(null, "Filial removida com sucesso.", "Sucesso",
             		JOptionPane.INFORMATION_MESSAGE);
             return true;
@@ -156,10 +156,11 @@ public class ControleDados {
             		+ "com letras ou numeros nao nulos.", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } 
+        
         else {
             Consumivel c = new Consumivel(dadosConsumivel[1], dadosConsumivel[2],
-            		Integer.parseInt(dadosConsumivel[3]),dadosConsumivel[4], 
-            		Integer.parseInt(dadosConsumivel[5]));
+            		dadosConsumivel[3],
+            		Integer.parseInt(dadosConsumivel[4]),Integer.parseInt(dadosConsumivel[5]));
             dados.inserirEditarConsumivel(c,Integer.parseInt(dadosConsumivel[0]));
             JOptionPane.showMessageDialog(null, "Consumivel inserido/editado com sucesso.",
             		"Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -169,7 +170,7 @@ public class ControleDados {
     public boolean removerConsumivel(int i) {
         String consumivelRemovido = dados.getConsumivel()[i].getNome();
 
-        if (i == (dados.getQtdVeiculos() - 1)) {
+        if (i == (dados.getQtdConsumivel() - 1)) {
             dados.setQtdConsumivel(dados.getQtdConsumivel() - 1);
             dados.getConsumivel()[dados.getQtdConsumivel()] = null;
             JOptionPane.showMessageDialog(null, "Filial removida com sucesso.",
@@ -202,12 +203,36 @@ public class ControleDados {
             return false;
         } 
         else {
-            Imovel i = new Imovel(dadosImovel[1],dadosImovel[2],Integer.parseInt(dadosImovel[3]),
-            		dadosImovel[4],
-            		Integer.parseInt(dadosImovel[5]),Integer.parseInt(dadosImovel[6]),dadosImovel[7]);
+            Imovel i = new Imovel(dadosImovel[1], dadosImovel[2], dadosImovel[3],
+            		Integer.parseInt(dadosImovel[4]),Integer.parseInt(dadosImovel[5]),
+            		Integer.parseInt(dadosImovel[6]),dadosImovel[7]);
             dados.inserirEditarImovel(i,Integer.parseInt(dadosImovel[0]));
             JOptionPane.showMessageDialog(null, "Imovel inserido/editado com sucesso.",
             		"Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }
+    }
+    public boolean removerImovel(int i) {
+        String imovelRemovido = dados.getImovel()[i].getNome();
+
+        if (i == (dados.getQtdImovel() - 1)) {
+            dados.setQtdImovel(dados.getQtdImovel() - 1);
+            dados.getImovel()[dados.getQtdImovel()] = null;
+            JOptionPane.showMessageDialog(null, "Imovel removido com sucesso.",
+            		"Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else {
+            int cont = 0;
+            while (!dados.getImovel()[cont].getNome().equals(imovelRemovido)) {
+                cont++;
+            }
+            for (int j = cont; j < dados.getQtdImovel() - 1; j++) {
+                dados.getImovel()[j] = dados.getImovel()[j + 1];
+            }
+            dados.getImovel()[dados.getQtdVeiculos()] = null;
+            dados.setQtdImovel(dados.getQtdImovel() - 1);
+            JOptionPane.showMessageDialog(null, "Imovel removido com sucesso.", "Sucesso",
+            		JOptionPane.INFORMATION_MESSAGE);
             return true;
         }
     }
@@ -224,11 +249,35 @@ public class ControleDados {
         } 
         else {
             Eletronico e = new Eletronico(dadosEletronico[1], dadosEletronico[2], 
-            		Integer.parseInt(dadosEletronico[3]),dadosEletronico[4],
-            		dadosEletronicos[5], dadosEletronico[6]);
+            		dadosEletronico[3],Integer.parseInt(dadosEletronico[4]),
+            		Integer.parseInt(dadosEletronico[5]), Boolean.getBoolean(dadosEletronico[6]));
             dados.inserirEditarEletronico(e,Integer.parseInt(dadosEletronico[0]));
             JOptionPane.showMessageDialog(null, "Eletronico inserido/editado com sucesso.",
             		"Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }
+    }
+    public boolean removerEletronico(int i) {
+        String eletronicoRemovido = dados.getEletronico()[i].getNome();
+
+        if (i == (dados.getQtdEletronico() - 1)) {
+            dados.setQtdEletronico(dados.getQtdEletronico() - 1);
+            dados.getEletronico()[dados.getQtdEletronico()] = null;
+            JOptionPane.showMessageDialog(null, "Eletronico removido com sucesso.",
+            		"Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else {
+            int cont = 0;
+            while (!dados.getEletronico()[cont].getNome().equals(eletronicoRemovido)) {
+                cont++;
+            }
+            for (int j = cont; j < dados.getQtdVeiculos() - 1; j++) {
+                dados.getEletronico()[j] = dados.getEletronico()[j + 1];
+            }
+            dados.getEletronico()[dados.getQtdVeiculos()] = null;
+            dados.setQtdEletronico(dados.getQtdVeiculos() - 1);
+            JOptionPane.showMessageDialog(null, "Eletronico removido com sucesso.", "Sucesso",
+            		JOptionPane.INFORMATION_MESSAGE);
             return true;
         }
     }

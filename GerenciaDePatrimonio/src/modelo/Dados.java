@@ -18,10 +18,10 @@ public class Dados {
 			/*Cria objetos aleatorios no banco de dados*/
 			
 			filiais[i] = new Filial("Filial " + i, "Endereço " + i);
-			consumivel[i]= new Consumivel("Consumivel "+ i, "teste", i*5142,"testelol", i*4);
-			imovel[i]= new Imovel("Imovel "+ i, null, i, null, i, i, null);
-			veiculo[i]= new Veiculo("Veiculo"+ i, null, i, null, null, null, null);
-			eletronico[i]= new Eletronico("Eletronico"+i,null,i, null, i*12, null);
+			consumivel[i]= new Consumivel("Consumivel "+ i,"testeConsumivel","testeConsumivel",i,i);
+			imovel[i]= new Imovel("Imovel "+ i, "testeConsumivel", "testeConsumivel", i, i, i, "testeConsumivel");
+			veiculo[i]= new Veiculo("Veiculo"+ i, "teste", "teste",i, "teste", "teste", "teste");
+			eletronico[i]= new Eletronico("Eletronico"+i,"teste","testeConsumivel", i, i*12, false);
 			
 			/*Atualiza a qtd de objetos com a qtd criada na funcao*/
 			

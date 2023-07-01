@@ -6,7 +6,7 @@ public abstract class Bem{
 	private String dataAquisicao;
 	private int numeroSerie;
 		
-	public Bem(String nome, String descricao, int numeroSerie, String dataAquisicao) {
+	public Bem(String nome, String descricao, String dataAquisicao, int numeroSerie) {
 		this.nome= nome;
 		this.descricao= descricao;
 		this.dataAquisicao= dataAquisicao;
