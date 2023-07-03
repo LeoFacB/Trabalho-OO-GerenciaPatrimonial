@@ -1,14 +1,12 @@
 package view;
-/*Imovel=10
- * Eletronico=20
- * Veiculo=30
- * Consumivel=40*/
-
-import java.awt.BorderLayout;
+/**
+ * Classe da tela de detalhes de um bem.
+ * 
+ * @author Leonardo Fachinello Bonetti e Angelica Da Costa Campos
+ * @since 2023
+ * @version 1.5
+ */
 import java.awt.Color;
-import javax.security.*;
-import java.lang.management.ManagementFactory;
-import java.util.*;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +32,6 @@ public class TelaDetalhe implements ActionListener {
     private JLabel labelValor = new JLabel("Valor:");
     private JLabel labelEnderecoI = new JLabel("Endereço:");
     private JLabel labelVoltagem = new JLabel("Voltagem:");
-    private JLabel labelTomada = new JLabel("Necessita tomada constante:");
     private JLabel labelPlaca = new JLabel("Placa:");
     private JLabel labelMarca = new JLabel("Marca do Veiculo:");
     private JLabel labelModelo = new JLabel("Modelo do Veiculo:");
@@ -57,9 +54,7 @@ public class TelaDetalhe implements ActionListener {
     private JTextField valorMarca;
     private JTextField valorModelo;
     private JTextField valorDepreciacao;
-    
-    private JRadioButton simTomada= new JRadioButton("Necessita", false);
-    private JRadioButton naoTomada= new JRadioButton("Não necessita", true);
+
     private JRadioButton simCadastro=new JRadioButton("Sim", false);
     private JRadioButton naoCadastro= new JRadioButton("Não", true);
     private ButtonGroup bg = new ButtonGroup();
@@ -67,9 +62,11 @@ public class TelaDetalhe implements ActionListener {
     
     private JButton botaoSalvar  = new JButton("Salvar");
     private JButton botaoExcluir = new JButton("Excluir");
+    private JButton botaoVerBens  = new JButton("Bens");
     
     private String novoDado[] = new String[9];
     private ControleDados dados;
+    private ControleDados dados2;
 	private String titulo;
 	private int opcao;
 	private int posicao;
@@ -78,17 +75,17 @@ public class TelaDetalhe implements ActionListener {
     	opcao=op;
     	posicao=pos;
     	dados=d;
+    	dados2=d;
     	if (opcao == 1) titulo = "Cadastro de Filial";
         if (opcao == 3) titulo = "Detalhe de Filial";
         janela = new JFrame(titulo);
         
-      //Preenche dados com dados clicado
         if (opcao == 3) {
 			valorNome = new JTextField(dados.getFiliais()[posicao].getNome(), 200);
 			valorEndereco = new JTextField(dados.getFiliais()[posicao].getEndereco(),200);
 			
 		}
-        else { //Nao preenche com dados
+        else {
 			valorNome = new JTextField(200);
 			valorEndereco = new JTextField(200);
 	        botaoSalvar.setBounds(100, 80, 100, 25);
@@ -110,6 +107,7 @@ public class TelaDetalhe implements ActionListener {
         
         botaoSalvar.setBackground(Color.GRAY);
         botaoExcluir.setBackground(Color.GRAY);
+        botaoVerBens.setBackground(Color.GRAY);
         
 		janela.getContentPane().setBackground(Color.DARK_GRAY);
 
@@ -122,6 +120,7 @@ public class TelaDetalhe implements ActionListener {
       	if (opcao == 3) {
 	        botaoSalvar.setBounds(100, 80, 100, 25);
             botaoExcluir.setBounds(220, 80, 100, 25);
+            botaoVerBens.setBounds(100, 120, 220, 25);
       		this.janela.add(botaoExcluir);
       	}
       	this.janela.add(labelNome);
@@ -129,6 +128,7 @@ public class TelaDetalhe implements ActionListener {
       	this.janela.add(labelEndereco);
       	this.janela.add(valorEndereco);
       	this.janela.add(botaoSalvar);
+      	this.janela.add(botaoVerBens);
 
       	this.janela.setLayout(null);
 
@@ -137,6 +137,7 @@ public class TelaDetalhe implements ActionListener {
 
         botaoSalvar.addActionListener(this);
         botaoExcluir.addActionListener(this);
+        botaoVerBens.addActionListener(this);
     }
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
@@ -160,13 +161,13 @@ public class TelaDetalhe implements ActionListener {
     				novoDado[2]= valorDescricao.getText();
     				novoDado[3]= valorDataAquisicao.getText();
     				novoDado[4]= valorNumeroSerie.getText();
-    				novoDado[8]= valorNomeFilial.getText();
     			}
     			if(opcao==10) {
     				novoDado[0]= Integer.toString(dados.getQtdImovel());
     				novoDado[5]= valorTamanhoTerreno.getText();
     				novoDado[6]= valorValor.getText();
     				novoDado[7]= valorEnderecoI.getText();
+    				novoDado[8]= valorNomeFilial.getText();
     			}
     			if(opcao==11) {
     				novoDado[0]=Integer.toString(posicao);
@@ -177,24 +178,18 @@ public class TelaDetalhe implements ActionListener {
     			if(opcao==20) {
     				novoDado[0]=Integer.toString(dados.getQtdEletronico());
     				novoDado[5]= valorVoltagem.getText();
-    				if(simTomada.isSelected())
-    					novoDado[6]=String.valueOf(true);
-    				if(naoTomada.isSelected())
-    					novoDado[6]=String.valueOf(false);
+    				novoDado[8]= valorNomeFilial.getText();
     			}
     			if(opcao==21) {
     				novoDado[0]=Integer.toString(posicao);
     				novoDado[5]= valorVoltagem.getText();
-    				if(simTomada.isSelected())
-    					novoDado[6]=String.valueOf(true);
-    				if(naoTomada.isSelected())
-    					novoDado[6]=String.valueOf(false);
     			}
     			if(opcao==30) {
     				novoDado[0]=Integer.toString(dados.getQtdImovel());
     				novoDado[5]= valorMarca.getText();
     				novoDado[6]= valorPlaca.getText();
     				novoDado[7]= valorModelo.getText();
+    				novoDado[8]= valorNomeFilial.getText();
     			}
     			if(opcao==31) {
     				novoDado[0]=Integer.toString(posicao);
@@ -205,6 +200,7 @@ public class TelaDetalhe implements ActionListener {
     			if(opcao==40) {
     				novoDado[0]=Integer.toString(dados.getQtdImovel());
     				novoDado[5]= valorDepreciacao.getText();
+    				novoDado[8]= valorNomeFilial.getText();
     			}
     			if(opcao==41) {
     				novoDado[0]=Integer.toString(posicao);
@@ -225,22 +221,65 @@ public class TelaDetalhe implements ActionListener {
     			
         	}
         	if(opcao==10 || opcao==11) {
-				boolean res = dados.inserirEditarImovel(novoDado);
-				confirmaEnvio(res);
+        		boolean res=false;
+        		if(opcao==10 && !novoDado[8].isEmpty()) {
+    				res = dados.inserirEditarImovelFilial(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==10 && novoDado[8].isEmpty()) {
+        			res =dados.inserirEditarImovel(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==11) {
+        			res = dados.inserirEditarImovel(novoDado);
+        			confirmaEnvio(res);
+        		}
         		}
         	if(opcao==20|| opcao==21) {
-				boolean res = dados.inserirEditarEletronico(novoDado);
-				confirmaEnvio(res);
-        	}
+        		boolean res=false;
+        		if(opcao==20 && !novoDado[8].isEmpty()) {
+    				res = dados.inserirEditarEletronicoFilial(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==20 && novoDado[8].isEmpty()) {
+        			res =dados.inserirEditarEletronico(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==21) {
+        			res = dados.inserirEditarEletronico(novoDado);
+        			confirmaEnvio(res);
+        		}
+        		}
         	if(opcao==30|| opcao==31) {
-				boolean res = dados.inserirEditarVeiculo(novoDado);
-				confirmaEnvio(res);
+        		boolean res=false;
+        		if(opcao==30 && !novoDado[8].isEmpty()) {
+    				res = dados.inserirEditarVeiculoFilial(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==30 && novoDado[8].isEmpty()) {
+        			res =dados.inserirEditarVeiculo(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==31) {
+        			res = dados.inserirEditarVeiculo(novoDado);
+        			confirmaEnvio(res);
+        		}
         	}
         	if(opcao==40|| opcao==41) {
-				boolean res = dados.inserirEditarConsumivel(novoDado);
-				confirmaEnvio(res);
+        		boolean res=false;
+        		if(opcao==40 && !novoDado[8].isEmpty()) {
+    				res = dados.inserirEditarConsumivelFilial(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==40 && novoDado[8].isEmpty()) {
+        			res =dados.inserirEditarConsumivel(novoDado);
+    				confirmaEnvio(res);
+            		}
+        		if(opcao==41) {
+        			res = dados.inserirEditarConsumivel(novoDado);
+        			confirmaEnvio(res);
+        		}
         	}
-        	
         }
 
         	if (src == botaoExcluir){
@@ -270,7 +309,9 @@ public class TelaDetalhe implements ActionListener {
         		valorNomeFilial.setVisible(false);
         		labelNomeFilial.setVisible(false);
         	}
-    	}
+        	if(src== botaoVerBens) {
+        		new TelaListaFilial().ListaBens(posicao, dados2);
+        	}}
     public void inserirEditarBem(int op, ControleDados d, int pos) {
     	opcao=op;
     	posicao=pos;
@@ -286,6 +327,8 @@ public class TelaDetalhe implements ActionListener {
 			valorDataAquisicao= new JTextField(200);
 			valorNumeroSerie= new JTextField(200);
 			valorNomeFilial= new JTextField (200);
+			
+			
 		}
 		if(opcao==11) {
 			valorNomePatrimonio= new JTextField(dados.getImovel()[posicao].getNome(), 200);
@@ -294,7 +337,6 @@ public class TelaDetalhe implements ActionListener {
 					.getDataAquisicao(), 200);
 			valorNumeroSerie= new JTextField(Integer.toString(dados.getImovel()
 					[posicao].getNumeroSerie()));
-			valorNomeFilial= new JTextField (200);
 		}
 		if(opcao==21) {
 			valorNomePatrimonio= new JTextField(dados.getEletronico()[posicao].getNome(), 200);
@@ -303,7 +345,6 @@ public class TelaDetalhe implements ActionListener {
 					.getDataAquisicao(), 200);
 			valorNumeroSerie= new JTextField(Integer.toString(dados.getEletronico()
 					[posicao].getNumeroSerie()));
-			valorNomeFilial= new JTextField (200);
 		}
 		if(opcao==31) {
 			valorNomePatrimonio= new JTextField(dados.getVeiculo()[posicao].getNome(), 200);
@@ -312,7 +353,6 @@ public class TelaDetalhe implements ActionListener {
 					.getDataAquisicao(), 200);
 			valorNumeroSerie= new JTextField(Integer.toString(dados.getVeiculo()
 					[posicao].getNumeroSerie()));
-			valorNomeFilial= new JTextField (200);
 		}
 		if(opcao==41) {
 			valorNomePatrimonio= new JTextField(dados.getConsumivel()[posicao].getNome(), 200);
@@ -321,50 +361,46 @@ public class TelaDetalhe implements ActionListener {
 					.getDataAquisicao(), 200);
 			valorNumeroSerie= new JTextField(Integer.toString(dados.getConsumivel()
 					[posicao].getNumeroSerie()));
-			valorNomeFilial= new JTextField (200);
 		}
 		
 		labelNomePatrimonio.setBounds(10, 10, 150, 25);
 		labelDescricao.setBounds(10, 40, 150, 25);
 		labelDataAquisicao.setBounds(10, 70, 150, 25);
 		labelNumeroSerie.setBounds(10, 100, 150, 25);
-		labelDecisaoCadastro.setBounds(10, 220, 400, 25);
 		labelNomeFilial.setBounds(10, 300, 150, 25);
 		
 		botaoSalvar.setBounds(100, 400, 100, 25);
 		
-		simCadastro.setBounds(130, 250, 50, 25);
-		naoCadastro.setBounds(190, 250, 50, 25);
+		
 		
 		valorNomePatrimonio.setBounds(160, 10, 200, 25);
 		valorDescricao.setBounds(160, 40, 200, 25);
 		valorDataAquisicao.setBounds(160, 70, 200, 25);
 		valorNumeroSerie.setBounds(160, 100, 200, 25);
-		valorNomeFilial.setBounds(160, 300, 200, 25);
+		
 			
 		labelNomePatrimonio.setFont(new Font("Arial", Font.PLAIN, 15));
 		labelDescricao.setFont(new Font("Arial", Font.PLAIN, 15));
 		labelDataAquisicao.setFont(new Font("Arial", Font.PLAIN, 15));
 		labelNumeroSerie.setFont(new Font("Arial", Font.PLAIN, 15));
-		labelDecisaoCadastro.setFont(new Font("Arial", Font.PLAIN, 15));
+		
 		labelNomeFilial.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		labelNomePatrimonio.setForeground(Color.white);
 		labelDescricao.setForeground(Color.white);
 		labelDataAquisicao.setForeground(Color.white);
 		labelNumeroSerie.setForeground(Color.white);
-		labelDecisaoCadastro.setForeground(Color.white);
+		
 		labelNomeFilial.setForeground(Color.white);
 		
 		valorNomePatrimonio.setForeground(Color.GRAY);
 		valorDescricao.setForeground(Color.GRAY);
 		valorDataAquisicao.setForeground(Color.GRAY);
 		valorNumeroSerie.setForeground(Color.GRAY);
-		valorNomeFilial.setForeground(Color.GRAY);
+		
 		botaoSalvar.setForeground(Color.GRAY);
 		
-		bg2.add(simCadastro);
-		bg2.add(naoCadastro);
+		
 					
 		this.janela.add(labelNomePatrimonio);
 		this.janela.add(valorNomePatrimonio);
@@ -375,18 +411,35 @@ public class TelaDetalhe implements ActionListener {
 		this.janela.add(labelNumeroSerie);
 		this.janela.add(valorNumeroSerie);
 		this.janela.add(labelDecisaoCadastro);
-		this.janela.add(simCadastro);
-		this.janela.add(naoCadastro);
-		this.janela.add(valorNomeFilial);
-		this.janela.add(labelNomeFilial);
 		this.janela.add(botaoSalvar);
 		
-		simCadastro.addActionListener(this);
-        naoCadastro.addActionListener(this);
 		botaoSalvar.addActionListener(this);
 		
-		valorNomeFilial.setVisible(false);
-		labelNomeFilial.setVisible(false);
+		if(opcao==10 || opcao == 20 || opcao ==30 || opcao==40){
+			labelDecisaoCadastro.setBounds(10, 220, 400, 25);
+			labelDecisaoCadastro.setFont(new Font("Arial", Font.PLAIN, 15));
+			labelDecisaoCadastro.setForeground(Color.white);
+			
+			valorNomeFilial.setBounds(160, 300, 200, 25);
+			valorNomeFilial.setForeground(Color.GRAY);
+			
+			simCadastro.setBounds(130, 250, 50, 25);
+			naoCadastro.setBounds(190, 250, 50, 25);
+			
+			bg2.add(simCadastro);
+			bg2.add(naoCadastro);
+			
+			simCadastro.addActionListener(this);
+	        naoCadastro.addActionListener(this);
+			
+			this.janela.add(simCadastro);
+			this.janela.add(naoCadastro);
+			this.janela.add(valorNomeFilial);
+			this.janela.add(labelNomeFilial);
+			
+			valorNomeFilial.setVisible(false);
+			labelNomeFilial.setVisible(false);
+		}
 		
 		if(opcao==11||opcao==21||opcao==31||opcao==41)
 			adicionarBotaoExcluir();
@@ -446,28 +499,15 @@ public class TelaDetalhe implements ActionListener {
 			
 			labelVoltagem.setBounds(10, 130, 150, 25);
 			valorVoltagem.setBounds(160, 130, 150, 25);
-			labelTomada.setBounds(10, 160, 300, 25);
-			simTomada.setBounds(100, 190, 90, 25);
-			naoTomada.setBounds(200, 190, 110, 25);
 			
 			labelVoltagem.setFont(new Font("Arial", Font.PLAIN, 15));
-			labelTomada.setFont(new Font("Arial", Font.PLAIN, 15));
 			
 			labelVoltagem.setForeground(Color.white);
-			labelTomada.setForeground(Color.white);
 			valorVoltagem.setForeground(Color.GRAY);
-			
-			bg.add(simTomada);
-			bg.add(naoTomada);
 			
 			this.janela.add(labelVoltagem);
 			this.janela.add(valorVoltagem);
-			this.janela.add(labelTomada);
-			this.janela.add(simTomada);
-			this.janela.add(naoTomada);
-			
-	        simTomada.addActionListener(this);
-	        naoTomada.addActionListener(this);
+
 		}
 		if(opcao==30|| opcao==31) {
 			if(opcao==30) {
@@ -533,25 +573,40 @@ public class TelaDetalhe implements ActionListener {
 		this.janela.setLayout(null);
 		this.janela.setVisible(true);
     }
+/**
+ * Manda uma notificação de sucesso quando o processo de exclusao falha
+*/
     public void mensagemSucessoExclusao() {
         JOptionPane.showMessageDialog(null, "Os dados foram excluídos com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
+/**
+ * Manda uma notificação de sucesso quando o processo de cadastro é executado
+*/
     public void mensagemSucessoCadastro() {
         JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null,
                 JOptionPane.INFORMATION_MESSAGE);
         janela.dispose();
     }
+/**
+ * Manda uma notificação de sucesso quando o processo de exclusao é executado
+*/
     public void mensagemErroCadastro() {
-        JOptionPane.showMessageDialog(null, "Erro ao salvar os dados da filial!", null,
+        JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!", null,
                 JOptionPane.ERROR_MESSAGE);
     }
+/**
+ * Manda uma notificação de falha quando o processo de exclusao é executado
+*/
     public void mensagemErroExclusao() {
-        JOptionPane.showMessageDialog(null, "Erro ao excluir os dados da filial!", null,
+        JOptionPane.showMessageDialog(null, "Erro ao excluir os dados!", null,
                 JOptionPane.ERROR_MESSAGE);
     }
-    /*Manda uma notificação de falha ou envio quando o processo de cadastro é executado*/
+/**
+ * Manda uma notificação de envio quando o processo de cadastro é executado
+ * @param um boolean de confirmaçao da operação
+ * */
     public void confirmaEnvio (boolean res) {
     	if(res) {
 			mensagemSucessoCadastro();
@@ -565,7 +620,10 @@ public class TelaDetalhe implements ActionListener {
     	else
     		mensagemErroCadastro();
     }
-    /*Recebe a opcao para assim definir o titulo da pagina*/
+/**
+ * Define o titulo da janela
+ * @param a opcao de tela escolhida no menu
+ * */
     public void nomeTitulo(int op) {
     	if(op==10)
     		titulo=("Cadastro de Imovel");
@@ -584,7 +642,9 @@ public class TelaDetalhe implements ActionListener {
     	if(op==41)
     		titulo=("Detalhes do Consumivel");
     }
-    /*Cria e coloca o botao excluir nos editar bens*/
+/**
+ * Cria e coloca o botao excluir nos editar bens
+ * */
     public void adicionarBotaoExcluir() {
     	botaoExcluir.setBounds(220, 400, 100, 25);
   		this.janela.add(botaoExcluir);

@@ -1,15 +1,11 @@
 package controle;
 import modelo.*;
-
-
-/* Classe para fazer o controle de dados dos Bens
+/** Classe para fazer o controle de dados dos Bens
  * Controla a quantidade de filiais, seus nomes
  * @author Angélica da Costa Campos
  * @since 2023
- * @version 1.2 
+ * @version 1.3
  * */
-
-
 public class ControleBem {
 	private Imovel[] imovel;    
 	private int qtdImovel;
@@ -97,7 +93,10 @@ public class ControleBem {
 	public void setQtdEletronico(int qtdEletronico) {
 		this.qtdEletronico = qtdEletronico;
 	}
-
+/**
+ * Cria uma lista de strings contendo o nome dos imóveis
+ * @return um array de nomes
+ * */
 	public String[] getNomeBemImovel() {
 		String[] nomes = new String[qtdImovel];    
 		for(int i = 0; i < qtdImovel; i++) {
@@ -105,6 +104,10 @@ public class ControleBem {
 		}
 		return nomes;   
 	}
+/**
+ * Cria uma lista de strings contendo o nome dos veiculos
+ * @return um array de nomes de veiculos
+ * */	
 	public String[] getNomeBemVeiculo() {
 		String[] nomes = new String[qtdVeiculo];    
 		for(int i = 0; i < qtdVeiculo; i++) {
@@ -112,6 +115,10 @@ public class ControleBem {
 		}
 		return nomes;   
 	}
+/**
+ * Cria uma lista de strings contendo o nome dos consumiveis
+ * @return um array de nomes de consumiveis
+ * */	
 	public String[] getNomeBemConsumivel() {
 		String[] nomes = new String[qtdConsumivel];    
 		for(int i = 0; i < qtdConsumivel; i++) {
@@ -119,6 +126,10 @@ public class ControleBem {
 		}
 		return nomes;   
 	}
+/**
+ * Cria uma lista de strings contendo o nome dos eletronicos
+ * @return um array de nomes de eletronicos
+ * */	
 	public String[] getNomeBemEletronico() {
 		String[] nomes = new String[qtdEletronico];    
 		for(int i = 0; i < qtdEletronico; i++) {
