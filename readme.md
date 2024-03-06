@@ -48,5 +48,14 @@ Funcionalidades mínimas obrigatórias:
 - Listagem de todo patrimônio de uma filial.
 - Busca por um patrimônio dado seu nome.
 
+# Telas do programa
+Todas as telas dispõem interação com o usuário por meio de interface gráfica.
+Aqui estão algumas telas.
+![Tela menu](https://github.com/LeoFacB/Trabalho-OO-GerenciaPatrimonial/assets/82877749/37c6f263-e8f9-4532-9046-7ca1c728800e)
+Apartir do menu principal o usuário pode buscar, cadastrar e vizualizar os patrimonios, além de atualizar o sistemas após novos cadastros. 
+![Tela pesquisa imovel](https://github.com/LeoFacB/Trabalho-OO-GerenciaPatrimonial/assets/82877749/ce7ada32-c048-4efb-816c-4b56d0b6e8fb)
+![Tela cadastro filial](https://github.com/LeoFacB/Trabalho-OO-GerenciaPatrimonial/assets/82877749/f2ddd82d-c069-42b4-b7e4-318b5a230fe3)
+![tela cadastro consumivel](https://github.com/LeoFacB/Trabalho-OO-GerenciaPatrimonial/assets/82877749/5ef39919-842d-4adb-9816-2092473f2f3f)
+
 # 📍 Estado do Projeto
 Concluído
