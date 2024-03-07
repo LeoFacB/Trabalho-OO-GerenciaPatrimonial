@@ -52,6 +52,7 @@ Funcionalidades mínimas obrigatórias:
 - [awt](https://www.javatpoint.com/java-awt)
 - [JUnit](https://junit.org/junit5/docs/current/user-guide/)
 - [swing](https://www.javatpoint.com/java-swing)
+- [java.util](https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html)
 
 ## 🖱 Telas do programa
 Todas as telas dispõem interação com o usuário por meio de interface gráfica.
