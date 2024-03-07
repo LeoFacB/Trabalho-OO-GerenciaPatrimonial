@@ -64,5 +64,7 @@ Apartir do menu principal o usuário pode buscar, cadastrar e vizualizar os patr
 ![Tela cadastro filial](https://github.com/LeoFacB/Trabalho-OO-GerenciaPatrimonial/assets/82877749/f2ddd82d-c069-42b4-b7e4-318b5a230fe3)
 ![tela cadastro consumivel](https://github.com/LeoFacB/Trabalho-OO-GerenciaPatrimonial/assets/82877749/5ef39919-842d-4adb-9816-2092473f2f3f)
 
-## 📍 Estado do Projeto
-Concluído
+## 📍 Status do Repositório
+[![GitHub language count](https://img.shields.io/github/languages/count/angelicaccampos/Trabalho-OO-GerenciaPatrimonial)](https://github.com/angelicaccampos/Trabalho-OO-GerenciaPatrimonial)
+[![GitHub last commit](https://img.shields.io/github/last-commit/angelicaccampos/Trabalho-OO-GerenciaPatrimonial)](https://github.com/angelicaccampos/Trabalho-OO-GerenciaPatrimonial)
+
